@@ -1,0 +1,187 @@
+\documentclass[12pt,a4paper,titlepage,xcolor=dvipsnames]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{Packages}
+
+\RequirePackage{amssymb}
+\RequirePackage{amsthm}
+\RequirePackage[T1]{fontenc} 							%
+\RequirePackage[utf8]{inputenc} 						% Umlaute
+\RequirePackage[ngerman]{babel}							% Rechtschreibprüfung 
+\RequirePackage{graphicx}								% Package um Bilder zu laden 
+\RequirePackage{setspace}								%
+\RequirePackage{fancyhdr}								% Paket für Kopfzeilen 
+\RequirePackage{titlesec}								%
+\RequirePackage{tocloft}								%
+\RequirePackage[a4paper]{geometry}						% Seitenränder
+\usepackage[linesnumbered,ruled]{algorithm2e}
+\RequirePackage{array}
+\RequirePackage[bookmarksopen=true]{hyperref}
+\RequirePackage{bookmark}
+\usepackage{eurosym}
+\usepackage{pdfpages}
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[procnames]{listings}
+\usepackage{color}
+\usepackage{blindtext}
+\usepackage{tabulary}
+\usepackage{listings}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usepackage{tkz-graph}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{Commands}
+
+\newcounter{nalg} % defines algorithm counter for chapter-level
+\renewcommand{\thenalg}{\thechapter \arabic{nalg}} %defines appearance of the algorithm counter
+\DeclareCaptionLabelFormat{algocaption}{Algorithmus \thenalg} % defines a new caption label as Algorithm x.y
+
+\lstnewenvironment{algo}[1][] %defines the algorithm listing environment
+{   
+    \refstepcounter{nalg} %increments algorithm number
+    \captionsetup{labelformat=algocaption,labelsep=colon} %defines the caption setup for: it ises label format as the declared caption label above and makes label and caption text to be separated by a ':'
+    \lstset{ %this is the stype
+        frame=tB,
+        numbers=left, 
+        numberstyle=\tiny,
+        basicstyle=\footnotesize, 
+        keywordstyle=\color{black}\bfseries\em,
+        keywords={,input, output, return, datatype, function, in, if, else, foreach, while, begin, end, } %add the keywords you want, or load a language as Rubens explains in his comment above.
+        numbers=left,
+        xleftmargin=.04\textwidth,
+        #1 % this is to add specific settings to an usage of this environment (for instnce, the caption and referable label)
+    }
+}
+{}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   PageFormat   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{Format}
+
+%%% Seitenränder anpassen 
+\setlength{\topskip}{\ht\strutbox} 					% behebt Warnung von geometry 
+\setlength{\headheight}{1.1\baselineskip}   		% Headheight hochsetzten 
+\geometry{paper=a4paper,
+left=25mm,											% Seitenabstand Links
+right=15mm,											% Seitenabstand Rechts
+top=25mm,											% Seitenabstand Oben
+bottom=25mm} 										% Seitenabstand Unten
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Pagestyles  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\label{Commands/style}
+\newcommand{\RM}[1]{\MakeUppercase{\romannumeral #1{.}}}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newcommand*{\Union}{\bigcup}
+\newcommand{\cs}[1]{\textit{\mathcal{C}(\mathcal{R})}}
+\newcommand{\ws}[1]{\textit{Work Space}}
+\newcommand{\fors}[1]{\textit{Forbidden Space}}
+\newcommand{\frees}[1]{\textit{Free Space}}
+
+\definecolor{rahmen}{rgb}{.7,1,.7}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Header      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{Header}
+%%% Fancy
+\pagestyle{fancy} 
+\renewcommand{\headrulewidth}{0pt}
+\lhead{Julian Lorenz, 3383863\\Manuel Penschuck}
+\chead{Effiziente Algorithmen\\Aufgabenblatt 10}
+\rhead{\today\\ $\sum$ \rule[-2mm]{8mm}{0.2mm} / 25 Punkte}
+
+\lfoot{}
+\cfoot{}
+\rfoot{\thepage}
+
+
+
+
+
+%%%				Begin Document
+\label{Begin}
+\begin{document}
+
+\section{Formeln}
+$G=(V,E)$ $n=|V|$ $m=|E|$\\
+$\Omega (n)$\\
+$\Theta(n)$\\
+$scan(N)=\Theta(N/B)$\\
+$sort(N)=\Theta((N/B)\cdot \log_{M/B}(N/B))$\\
+$scan(N)<sort(N)\ll N$\\
+$\mathcal{O}(|V|)$\\
+$\mathcal{O}((1+\log \log (B\cdot n/m))\cdot sort(n+m))$\\
+$\mathcal{O}(n/\mu)$\\
+$\mu = \sqrt{B}$\\
+$G_{i-1}(d_{i-1})$ $G_i(d_i)$\\
+$\max\{0,d_{i-1}(v)-\alpha\}$\\
+$\mathcal{O}(n/B^{2/3}+sort(n)\cdot \log(B))$\\
+$d_{i-1}(v)-d_i(v)\leq \alpha$\\
+$d_{i-1}(v)-d_i(v)> \alpha$\\
+$\textbf{P}[r(v)=0]=\textbf{P}[r(v)=1]=\frac{1}{2}$\\
+$\mu = 2^1, 2^2,\ldots,\sqrt{B}$\\
+$\langle b_r,\ldots,b_{q+1},b_q,\ldots,b_1\rangle$\\
+prefix $\langle b_r,\ldots,b_{q+1}\rangle$ suffix $\langle b_q,\ldots,b_1\rangle$\\
+External-Memory (EM)\\
+
+
+\section{Paper 2}
+\subsection{Introduction}
+Was ist BFS, edges one-by-one insertion. output nach jeder insertion.\\
+scheint unnötig auf dünn besetzten Graphen (da $\Omega(n)$) => dem ist nicht so.\\
+BFS level computation >>> reporting them. => schnelle alternative.
+
+\subsection{I/O-Model and Related Work}
+\subsubsection{Computation model}
+two-level hierarchy: fast internal memory (store M data items), slow disk of infinite size.
+External-Memory (EM) model of Aggarwal and Vitter [1].\\
+In an I/O operation, one block of data, which can store $B$ vertices/edges, is transferred between disk and internal memory. The measure of performance of an algorithm is the number of I/Os it performs. The number of I/Os needed to read $N$ contiguous items from disk is scan(N)=$\Omega(N/B)$. The number of I/Os required to sort N items is sort(N)=$\Omega((N/B)log_{M/B}(N/B))$. For all realistic values of N, B, and M, $scan(N)<sort(N)<<N$.
+\subsubsection{Review of Static and Dynamic EM BFS Algorithms}
+$MM_BFS$ algo and its dynamic extension. Edge insertions on already connected undirected sparse graphs with $n=|V|$ and $m=|E|=\mathcal{O}(|V|)$ edges.
+\subsubsection{MM_BFS}
+Zwei Phasen: preprocessing und BFS phase.\\
+Preprocessing: algo produces a clustering. => kann über euler-tour based on arbitrary spanning tree T des Graphen G realisiert werden. Falls T nicht im Input inbegriffen ist, kann T durch $\mathcal{O}((1+\log \log (B\cdot n/m))\cdot sort(n+m))$ I/O's generiert werden.\\
+Jede ungerichtete Kante wird durch zwei gerichtete ersetzt. Jeder Knoten wählt eine zyklische ORDER seiner Nachbarn. Successor of incoming edge is defined to be the outgoing edge of the next node in the cyclic order. Die Tour wird an einem speziellen Knoten (zb Wurzel) unterbrochen, wobei die Elemente der resultierenden Liste in CONSECUTIVE order using an external memory list-ranking algorithm.\\
+Danach wird die Euler Tour in Cluster von $\mu$ Knoten geteilt und DUPLICATES werden entfernt, so dass sich ein Knoten nur im ersten Cluster befindet, in dem er zuerst auftritt. Dies bedarf einige Sortierschritte.\\
+Somit ist der maximale Abstand von zwei Knoten innerhalb eines Clusters durch $\mu -1$ beschränkt, die Größe der Cluster selbst durch $\mathcal{O}(n/\mu)$.
+In der BFS Phase, die Grundidee ist die prerpoccessed Cluster in eine effiziente Datenstruktur (hot pool) zu laden (kostet ein paar I/O's), da die Cluster vertices enthalten, die in benachbarte BFS level übergehen.\\
+Somit können benachbarte Knoten $N(l)$ eines BFS level $l$ allein durch scannen des hot pools berechnet werden. Das nächste BFS level wird durch entfernen der besuchten Knoten in Level $l-1$ und $l$ von $N(l)$. Jedoch können neu entdeckte Nachbarn zu bisher unbesuchten Clustern gehören. Unstrukturierte I/O's sind nötig, um die Cluster in den hot pool zu laden, von wo sie wiederum entfernt werden, sobald die entsprechenden BFS level erzeugt wurden.\\
+
+MISSING
+
+\subsubsection{Dynamic BFS}
+Review the high-level ideas to computing BFS on general undirected sparse graphs in an incremental setting. Insertion of the $i$th edge $(u,v)$ und graph before: $G_{i-1}(d_{i-1})$, graph danach: $G_i(d_i)$.\\
+Run BFS phase of $MM_BFS$. Unterschied: adj list für $v$ is added to the hot pool H when creating BFS level max blub of $G_i$ für ein $\alpha > 1$.\\
+Indem man die adj list sortiert hält bzgl der Entfernung der node distances in $G_{i-1}$ kann man dies für alle Nodes $v$ in I/O's $d_{i-1}(v)-d_i(v)\leq \alpha$ erreichen.
+
+
+\section{On Dynamic Breadth-First search in External-Memory}
+\subsection{Introduction}
+\textbf{BFS:} Decomposes Graph $G(V,E)$ of $n$ nodes and $m$ edges into at most $n$ levels.\\
+Objective $\Rightarrow$ efficiently process an online sequence of update and query operations.\\[.2cm]
+$\Omega(n)$ edge insertions, but not delitions.
+
+\subsubsection{Computiation models}
+External-Memory (EM) model of Aggarwal and Vitter [1].\\
+In an I/O operation, one block of data, which can store $B$ vertices/edges, is transferred between disk and internal memory. The measure of performance of an algorithm is the number of I/Os it performs. The number of I/Os needed to read $N$ contiguous items from disk is scan(N)=$\Omega(N/B)$. The number of I/Os required to sort N items is sort(N)=$\Omega((N/B)log_{M/B}(N/B))$. For all realistic values of N, B, and M, $scan(N)<sort(N)<<N$.
+
+\subsubsection{Results}
+For general sparse undirected graphs of initially $n$ nodes
+
+
+\label{End}
+\end{document}

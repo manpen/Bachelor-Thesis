@@ -1,0 +1,59 @@
+Bachelorarbeit - Fabian Knöller
+------------------------------------------------------------------------------
+Quellen: To-Do
+	Aggarwal/Vitter - http://dl.acm.org/citation.cfm?doid=48529.48535
+
+------------------------------------------------------------------------------
+Kap 2 - Theo Grundlagen
+------------------------------------------------------------------------------
+	EM-Modell: ext Mem
+		B - # Daten in einer Zugriffsoperation zurpckgegeben
+		N - Problemgröße
+		M - Platz im internen Speicher
+		N >> M
+		scan(N)=Theta(N/B)
+		sort(N)=Theta(N/B * log_(M/B)(N/B))
+
+	Graphen
+		|V|=n, V=\{v_1,\ldots,v_n\}, |E|=m, E=\{e_1,\ldots,e_m\}, G=(V,E)
+		gerichtet vs ungerichtet (),{}, Grad(v_i) gleich bei ungerichtet
+		Adjazensliste, Adjazensmatrix
+
+	Clustering
+		Zusammengehörigkeit ~ räumlicher Nähe
+			=> \{v_s,\ldots,v_t\}\in V werden Cluster $C_i$ zugeordnet
+			=> Jeder Knoten befindet sich in genau einem Cluster
+			=> P(alle Knoten des Clusters als nächstes besuchen)= hoch, sobald Knoten besucht
+			=> Cluster möglichst gleich groß => Parallelisierung
+
+
+
+
+
+Kap 3 - aktuelle Stand Einfügen
+Kap 4 - Theorie und prakt Implementierung des Löschens
+Kap 5 - Exp Untersuchung
+Kap 6 - Ausblick
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

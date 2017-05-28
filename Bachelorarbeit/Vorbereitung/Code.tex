@@ -1,0 +1,185 @@
+\documentclass[12pt,a4paper,titlepage,xcolor=dvipsnames]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{Packages}
+
+\RequirePackage{amssymb}
+\RequirePackage{amsthm}
+\RequirePackage[T1]{fontenc} 							%
+\RequirePackage[utf8]{inputenc} 						% Umlaute
+\RequirePackage[ngerman]{babel}							% Rechtschreibprüfung 
+\RequirePackage{graphicx}								% Package um Bilder zu laden 
+\RequirePackage{setspace}								%
+\RequirePackage{fancyhdr}								% Paket für Kopfzeilen 
+\RequirePackage{titlesec}								%
+\RequirePackage{tocloft}								%
+\RequirePackage[a4paper]{geometry}						% Seitenränder
+\usepackage[linesnumbered,ruled]{algorithm2e}
+\RequirePackage{array}
+\RequirePackage[bookmarksopen=true]{hyperref}
+\RequirePackage{bookmark}
+\usepackage{eurosym}
+\usepackage{pdfpages}
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[procnames]{listings}
+\usepackage{color}
+\usepackage{blindtext}
+\usepackage{tabulary}
+\usepackage{listings}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{Commands}
+
+\newcounter{nalg} % defines algorithm counter for chapter-level
+\renewcommand{\thenalg}{\thechapter \arabic{nalg}} %defines appearance of the algorithm counter
+\DeclareCaptionLabelFormat{algocaption}{Algorithmus \thenalg} % defines a new caption label as Algorithm x.y
+
+\lstnewenvironment{algo}[1][] %defines the algorithm listing environment
+{   
+    \refstepcounter{nalg} %increments algorithm number
+    \captionsetup{labelformat=algocaption,labelsep=colon} %defines the caption setup for: it ises label format as the declared caption label above and makes label and caption text to be separated by a ':'
+    \lstset{ %this is the stype
+        frame=tB,
+        numbers=left, 
+        numberstyle=\tiny,
+        basicstyle=\footnotesize, 
+        keywordstyle=\color{black}\bfseries\em,
+        keywords={,input, output, return, datatype, function, in, if, else, foreach, while, begin, end, } %add the keywords you want, or load a language as Rubens explains in his comment above.
+        numbers=left,
+        xleftmargin=.04\textwidth,
+        #1 % this is to add specific settings to an usage of this environment (for instnce, the caption and referable label)
+    }
+}
+{}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   PageFormat   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{Format}
+
+%%% Seitenränder anpassen 
+\setlength{\topskip}{\ht\strutbox} 					% behebt Warnung von geometry 
+\setlength{\headheight}{1.1\baselineskip}   		% Headheight hochsetzten 
+\geometry{paper=a4paper,
+left=25mm,											% Seitenabstand Links
+right=15mm,											% Seitenabstand Rechts
+top=25mm,											% Seitenabstand Oben
+bottom=25mm} 										% Seitenabstand Unten
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Pagestyles  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\label{Commands/style}
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newcommand*{\Union}{\bigcup}
+\newcommand{\cs}[1]{\textit{\mathcal{C}(\mathcal{R})}}
+\newcommand{\ws}[1]{\textit{Work Space}}
+\newcommand{\fors}[1]{\textit{Forbidden Space}}
+\newcommand{\frees}[1]{\textit{Free Space}}
+
+\definecolor{rahmen}{rgb}{.7,1,.7}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Header      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{Header}
+%%% Fancy
+\pagestyle{fancy} 
+\renewcommand{\headrulewidth}{0pt}
+\lhead{Julian Lorenz, 3383863\\Manuel Penschuck}
+\chead{Effiziente Algorithmen\\Aufgabenblatt 2}
+\rhead{\today\\ $\sum$ \rule[-2mm]{8mm}{0.2mm} / 23 Punkte}
+
+\lfoot{}
+\cfoot{}
+\rfoot{\thepage}
+
+
+
+
+%%%				Begin Document
+\label{Begin}
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{Aufgabe 1}
+\noindent
+\begin{tabulary}{17cm}{LLR}
+\textbf{Aufgabe 2.1.} &\textsc{Paging}& ( \rule[-2mm]{5mm}{0.2mm} / 6 Punkte)\\
+\hspace{2.8cm} &\hspace{10cm} &\hspace{4cm} 
+\end{tabulary}
+\noindent
+
+$\Theta(n)$\\
+$\mathcal{O}(n)$\\
+$\mathcal{O}(n/B^{2/3}+sort(n)\cdot \log (B))$\\
+$\Omega(n/B^{1/2}+sort(n))$\\
+$G=(V,E)$\\
+$scan(N)=\Theta(N/B)$\\
+$sort(N)=\Theta((N/B)\cdot \log_{M/B}(N/B))$\\
+$scan(N)<sort(N)\ll N$\\
+$L(t):=A'(t)\backslash \{L(t-1)\cup L(t-2)\}$\\
+$\mathcal{O}(n+m)$\\
+$\Theta(n+m/B)$\\
+$\mathcal{O}(\sum_t L(t)+\sum_t sort(A(t)))=\mathcal{O}(n+sort(n+m))$\\
+$\mathcal{O}(sort(n+m))$\\
+$\max\{1,\sqrt{\frac{n\cdot B}{n+m}}\}$\\
+$1<\mu < \mathcal{O}(\sqrt{B})$\\
+$\Omega(n/\mu)$\\
+$\Omega(\mu)$\\
+$\textbf{P}[r(v)=0]=\textbf{P}[r(v)=1]=\frac{1}{2}$\\
+$\Delta d_i(v)=|d_{i-1}(v)-d_i(v)|$\\
+
+\\
+\vspace*{.2cm}
+\noindent\rule{\textwidth}{1pt}
+\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{Aufgabe 2}
+\noindent
+\begin{tabulary}{17cm}{LLR}
+\textbf{Aufgabe 2.2.} &\textit{Erwartungswert}& ( \rule[-2mm]{5mm}{0.2mm} / 3 Punkte)\\
+\hspace{2.8cm} &\hspace{10cm} &\hspace{4cm} 
+\end{tabulary}
+\noindent
+
+\\
+\vspace*{.2cm}
+\noindent\rule{\textwidth}{1pt}
+\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{Aufgabe 3}
+\noindent
+\begin{tabulary}{17cm}{LLR}
+\textbf{Aufgabe 2.3.} &\textit{Kopf-oder-Zahl}& ( \rule[-2mm]{5mm}{0.2mm} / 6 Punkte)\\
+\hspace{2.8cm} &\hspace{10cm} &\hspace{4cm} 
+\end{tabulary}
+\noindent
+
+
+\\
+\vspace*{.2cm}
+\noindent\rule{\textwidth}{1pt}
+\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{Aufgabe 4}
+\noindent
+\begin{tabulary}{17cm}{LLR}
+\textbf{Aufgabe 1.4.} &\textsc{Unabhängige Ereignisse}& ( \rule[-2mm]{5mm}{0.2mm} / 8 Punkte)\\
+\hspace{2.8cm} &\hspace{10cm} &\hspace{4cm} 
+\end{tabulary}
+\noindent
+
+
+\label{End}
+\end{document}

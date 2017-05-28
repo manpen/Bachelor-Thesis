@@ -1,0 +1,44 @@
+\documentclass[12pt,a4paper,titlepage,xcolor=dvipsnames]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{Preamble}			%	Preamble
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	Packages:		form/packages
+\include{form/packages}
+
+%	Format:			form/format
+\include{form/format}
+
+
+%	Header:			form/header
+\include{form/header}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{Begin Document}		%	Begin Document
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{Titlepage}			%	Titlepage
+\include{pages/titlepage2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{Table of Contents}	%	Table of Contents
+\newpage\tableofcontents\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{S1: Einleitung}		%	S1: Einleitung		
+\section{Einleitung}
+\let\clearpage\relax
+\include{pages/einleitung}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{Literaturverzeichnis}	%	Literaturverzeichnis
+\newpage
+\addcontentsline{toc}{section}{Literatur}
+\bibliography{bib/bib} 
+\bibliographystyle{ieeetr}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{End Document}
+\end{document}
