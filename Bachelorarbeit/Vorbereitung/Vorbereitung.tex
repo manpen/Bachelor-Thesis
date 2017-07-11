@@ -98,15 +98,7 @@ bottom=25mm} 										% Seitenabstand Unten
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{Header}
 %%% Fancy
-\pagestyle{fancy} 
-\renewcommand{\headrulewidth}{0pt}
-\lhead{Julian Lorenz, 3383863\\Manuel Penschuck}
-\chead{Effiziente Algorithmen\\Aufgabenblatt 10}
-\rhead{\today\\ $\sum$ \rule[-2mm]{8mm}{0.2mm} / 25 Punkte}
 
-\lfoot{}
-\cfoot{}
-\rfoot{\thepage}
 
 
 
@@ -152,7 +144,7 @@ External-Memory (EM) model of Aggarwal and Vitter [1].\\
 In an I/O operation, one block of data, which can store $B$ vertices/edges, is transferred between disk and internal memory. The measure of performance of an algorithm is the number of I/Os it performs. The number of I/Os needed to read $N$ contiguous items from disk is scan(N)=$\Omega(N/B)$. The number of I/Os required to sort N items is sort(N)=$\Omega((N/B)log_{M/B}(N/B))$. For all realistic values of N, B, and M, $scan(N)<sort(N)<<N$.
 \subsubsection{Review of Static and Dynamic EM BFS Algorithms}
 $MM_BFS$ algo and its dynamic extension. Edge insertions on already connected undirected sparse graphs with $n=|V|$ and $m=|E|=\mathcal{O}(|V|)$ edges.
-\subsubsection{MM_BFS}
+\subsubsection{MM\_BFS}
 Zwei Phasen: preprocessing und BFS phase.\\
 Preprocessing: algo produces a clustering. => kann über euler-tour based on arbitrary spanning tree T des Graphen G realisiert werden. Falls T nicht im Input inbegriffen ist, kann T durch $\mathcal{O}((1+\log \log (B\cdot n/m))\cdot sort(n+m))$ I/O's generiert werden.\\
 Jede ungerichtete Kante wird durch zwei gerichtete ersetzt. Jeder Knoten wählt eine zyklische ORDER seiner Nachbarn. Successor of incoming edge is defined to be the outgoing edge of the next node in the cyclic order. Die Tour wird an einem speziellen Knoten (zb Wurzel) unterbrochen, wobei die Elemente der resultierenden Liste in CONSECUTIVE order using an external memory list-ranking algorithm.\\

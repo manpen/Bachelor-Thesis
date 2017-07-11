@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper,titlepage,xcolor=dvipsnames]{article}
+\documentclass[12pt,a4paper,titlepage,xcolor=dvipsnames,bibliography=totoc]{scrartcl}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{Preamble}			%	Preamble
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -8,37 +8,49 @@
 %	Format:			form/format
 \include{form/format}
 
-
 %	Header:			form/header
 \include{form/header}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{Begin Document}		%	Begin Document
 \begin{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{Titlepage}			%	Titlepage
-\include{pages/titlepage2}
+\include{pages/title}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{Table of Contents}	%	Table of Contents
-\newpage\tableofcontents\newpage
-
+\cleardoublepage\pdfbookmark{\contentsname}{toc}\tableofcontents
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\label{S1: Einleitung}		%	S1: Einleitung		
-\section{Einleitung}
-\let\clearpage\relax
+\label{S0: Einleitung}		%	S1: Einleitung		
 \include{pages/einleitung}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{S1: Kapitel 1 - }
+\include{pages/kapitel1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{S2: Kapitel 2 - }
+\include{pages/kapitel2}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\label{Literaturverzeichnis}	%	Literaturverzeichnis
-\newpage
-\addcontentsline{toc}{section}{Literatur}
-\bibliography{bib/bib} 
-\bibliographystyle{ieeetr}
+\label{S3: Kapitel 3 - }
+\include{pages/kapitel3}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{S4: Kapitel 4 - }
+\include{pages/kapitel4}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{C0: Ausblick}		%	SX: Ausblick		
+\include{pages/ausblick}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{S0: Literatur}		%	S1: Einleitung		
+\include{pages/bib}
+
 \label{End Document}
 \end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
